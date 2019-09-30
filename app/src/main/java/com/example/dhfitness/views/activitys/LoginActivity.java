@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout inputPeso;
     private TextInputLayout inputAltura;
     private Button btnComecar;
-    public static final String USER_KEY = "usuaraio";
+    public static final String USER_KEY = "usuario";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

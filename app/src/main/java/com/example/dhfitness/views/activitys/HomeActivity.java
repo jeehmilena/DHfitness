@@ -30,9 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initViews();
 
-        //TODO verificar pq o objeto esta vindo nulo
         Intent intent = getIntent();
-
         final Usuario usario = setInformacoes(intent);
 
         btnVamosLa.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +51,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private Usuario setInformacoes(Intent intent){
-        Usuario usuario = new Usuario();
+        Usuario usuario;
 
         if (getIntent() != null && intent.getExtras() != null) {
 
-            Bundle bundle = intent.getExtras();
-            usuario = bundle.getParcelable(USER_KEY);
+            usuario = (Usuario) getIntent().getParcelableExtra(USER_KEY);
 
             txtHome.setText("Seja bem vindo " + usuario.getNome() + " ! Esse é um aplicativo que\n" +
                     "te ajuda a saber e calcular o seu Indice de Massa \n" +
@@ -71,9 +68,11 @@ public class HomeActivity extends AppCompatActivity {
             txtIdade.setText(idade);
             txtPeso.setText(peso);
             txtAltura.setText(altura);
+
+            return usuario;
         }
 
-        return usuario;
+        return usuario = new Usuario();
     }
 
     private void enviaDados(Usuario usuario){

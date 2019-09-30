@@ -12,7 +12,9 @@
         <activity android:name=".views.activitys.ResultadosActivity"></activity>
         <activity android:name=".views.activitys.HomeActivity" />
         <activity android:name=".views.activitys.LoginActivity" />
-        <activity android:name=".views.activitys.SplashActivity">
+        <activity
+            android:name=".views.activitys.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
