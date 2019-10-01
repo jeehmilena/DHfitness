@@ -20,6 +20,38 @@ public class Usuario implements Parcelable {
 
     }
 
+    protected Usuario(Parcel in) {
+        nome = in.readString();
+        idade = in.readInt();
+        altura = in.readFloat();
+        peso = in.readFloat();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nome);
+        dest.writeInt(idade);
+        dest.writeFloat(altura);
+        dest.writeFloat(peso);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
     public String getNome() {
         return nome;
     }
@@ -50,29 +82,5 @@ public class Usuario implements Parcelable {
 
     public void setPeso(float peso) {
         this.peso = peso;
-    }
-
-    protected Usuario(Parcel in) {
-    }
-
-    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
-        @Override
-        public Usuario createFromParcel(Parcel in) {
-            return new Usuario(in);
-        }
-
-        @Override
-        public Usuario[] newArray(int size) {
-            return new Usuario[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
     }
 }
